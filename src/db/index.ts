@@ -3,6 +3,9 @@ import { Sequelize } from 'sequelize-typescript';
 import { TextEncoder } from 'util';
 import { config } from './config';
 import { Movie } from './entity/movie.entity';
+import { Future } from './entity/future.entity';
+import { Favourite } from './entity/favourite.entity';
+import { Watched } from './entity/watched.entity';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const dotenv = require("dotenv")
 
@@ -60,7 +63,7 @@ global.TextEncoder = TextEncoder;
             ssl: config.ssl
           }
         });
-        sequelize.addModels([Movie]);
+        sequelize.addModels([Movie, Future, Favourite, Watched]);
         await sequelize.sync();
         return sequelize;
       },

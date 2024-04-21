@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MoviesModule } from './movies/movies.module';
+import { MovieModule } from './movies/movie.module';
+import { FutureModule } from './future/future.module';
+import { WatchedModule } from './watched/watched.module';
+import { FavouriteModule } from './favourite/favourite.module';
 
 
 @Module({
-  imports: [MoviesModule],
+  imports: [MovieModule, FutureModule, WatchedModule, FavouriteModule],
   controllers: [],
   providers: [],
 })

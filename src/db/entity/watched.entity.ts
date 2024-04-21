@@ -2,8 +2,8 @@ import { Table, Column, Model, ForeignKey, BelongsTo } from 'sequelize-typescrip
 import { Movie } from './movie.entity';
 
 
-@Table({ tableName: 'favourite', timestamps: false })
-export class Favourite extends Model {
+@Table({ tableName: 'watched', timestamps: false })
+export class Watched extends Model {
   @Column({ primaryKey: true, autoIncrement: true, allowNull: false })
   id!: number;
 

@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from 'src/db/db.module';
-import { MoviesController } from './movies.controller';
+import { MovieController } from './controllers/movie.controller';
 import { movieProviders } from 'src/db/providers/movie.providers';
-import { MovieService } from './movies.service';
+import { MovieService } from './services/movie.service';
 
 
 @Module({
   imports: [DatabaseModule],
-  controllers: [MoviesController],
+  controllers: [MovieController],
   providers: [
     MovieService,
     ...movieProviders,
   ],
 })
-export class MoviesModule {}
+export class MovieModule {}
