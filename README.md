@@ -30,4 +30,4 @@ This is the backend on Nest.js for my [movie_catalog_nextjs](https://github.com/
 
 🚀 Authorization, roles, and other functionality are currently under development.
 
-💡 At this moment, there is a standard set of CRUD operations.
+💡 At this moment, there is a standard set of CRUD operations with SequelizeORM.
