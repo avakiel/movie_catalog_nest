@@ -1,14 +1,23 @@
-import {  Controller,  Get } from '@nestjs/common';
-import { Favourite } from 'src/db/entity/favourite.entity';
-import { FavouriteService } from '../services/favourite.service';
-
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import { FavouriteService } from '../services/favourite.service'
+import { Movie } from 'src/db/entity/movie.entity'
 
 @Controller('favourite')
 export class FavouriteController {
-    constructor(private readonly favouriteService: FavouriteService) {} 
+  constructor(private readonly favouriteService: FavouriteService) {}
 
-    @Get()
-    async findAll(): Promise<Favourite[]> {
-      return this.favouriteService.findAll();
-    }
+  @Get()
+  async findAll(): Promise<Movie[]> {
+    return this.favouriteService.findAll()
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string): Promise<string> {
+    return this.favouriteService.delete(id)
+  }
+
+  @Post()
+  async create(@Body() id: string): Promise<Movie> {
+    return this.favouriteService.create(id)
+  }
 }

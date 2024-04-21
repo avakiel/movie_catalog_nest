@@ -1,4 +1,4 @@
-import {  Controller,  Get } from '@nestjs/common';
+import {  Body, Controller,  Delete,  Get, Param, Post, Put } from '@nestjs/common';
 import { Movie } from 'src/db/entity/movie.entity';
 import { MovieService } from '../services/movie.service';
 
@@ -9,6 +9,26 @@ export class MovieController {
 
     @Get()
     async findAll(): Promise<Movie[]> {
-      return this.movieService.findAll();
+        return this.movieService.findAll();
+    }
+
+    @Get(':title')
+    async findByTitle(@Param('title') title: string): Promise<Movie[]> {
+        return this.movieService.findByTitle(title);
+    }
+
+    @Post()
+    async create(@Body() movie: Omit<Movie, 'id'>): Promise<Movie> {
+        return this.movieService.create(movie);
+    }
+
+    @Put(':id')
+    async update(@Param('id') id: string, @Body() movie: Omit<Movie, 'id'>): Promise<Movie> {
+        return this.movieService.update(id, movie);
+    }
+
+    @Delete(':id')
+    async delete(@Param('id') id: string): Promise<string> {
+        return this.movieService.delete(id);
     }
 }
