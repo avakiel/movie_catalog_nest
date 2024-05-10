@@ -9,11 +9,22 @@ import { FutureModule } from './future/future.module';
 import { WatchedModule } from './watched/watched.module';
 import { FavouriteModule } from './favourite/favourite.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 dotenv.config();
 
 @Module({
-  imports: [MovieModule, FutureModule, WatchedModule, FavouriteModule, MongooseModule.forRoot(process.env.DB_MONGO_URI)],
+  imports: 
+  [
+    MovieModule,
+    FutureModule,
+    WatchedModule,
+    FavouriteModule,
+    MongooseModule.forRoot(process.env.DB_MONGO_URI),
+    UserModule,
+    AuthModule,
+  ],
   controllers: [],
   providers: [],
 })

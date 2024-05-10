@@ -1,15 +1,22 @@
-import {  Body, Controller,  Delete,  Get, Param, Post, Put } from '@nestjs/common';
+import {  Body, Controller,  Delete,  Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { Movie } from 'src/db/entity/movie.entity';
 import { MovieService } from '../services/movie.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 
 @Controller('movies')
+@UseGuards(AuthGuard)
 export class MovieController {
     constructor(private readonly movieService: MovieService) {} 
 
     @Get()
     async findAll(): Promise<Movie[]> {
         return this.movieService.findAll();
+    }
+
+    @Get(':id')
+    async findById(@Param('id') id: string): Promise<Movie> {
+        return this.movieService.findById(id);
     }
 
     @Get(':title')

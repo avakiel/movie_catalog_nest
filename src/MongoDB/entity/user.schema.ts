@@ -5,7 +5,7 @@ export type UserRole = 'admin' | 'user';
 
 @Schema()
 export class User extends Document {
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true})
     username: string;
   
     @Prop({ required: true })

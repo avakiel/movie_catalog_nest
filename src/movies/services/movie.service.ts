@@ -17,6 +17,18 @@ export class MovieService {
     }
   }
 
+  async findById(id: string): Promise<Movie> {
+    try {
+      const movie = await this.movieRepository.findByPk(+id)
+      if (!movie) {
+        throw new Error(`Movie with id ${id} not found`)
+      }
+      return movie
+    } catch (error) {
+      throw new Error(`Error while finding movie by id: ${error.message}`)
+    }
+  }
+
   async findByTitle(title: string): Promise<Movie[]> {
     try {
       const movies = await Movie.findAll({
